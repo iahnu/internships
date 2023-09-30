@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Image Caption Generator</h1>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="generateCaption()">Generate Caption</button>
+    <br>
+    <img id="outputImage" style="max-width: 500px;">
+    <p id="caption"></p>
+
+    <script>
+        function generateCaption() {
+            var input = document.getElementById('imageInput');
+            var outputImage = document.getElementById('outputImage');
+            var captionElement = document.getElementById('caption');
+
+            var file = input.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var image = new Image();
+                image.src = reader.result;
+                outputImage.src = reader.result;
+
+                // Send the image to the backend for caption generation
+                $.ajax({
+                    type: "POST",
+                    url: "/generate_caption",  // Endpoint to send the image to
+                    data: { image: reader.result },
+                    success: function(response) {
+                        captionElement.textContent = response.caption;
+                    }
+                });
+            }
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
