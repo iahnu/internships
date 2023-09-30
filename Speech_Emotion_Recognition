@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Emotion Recognition</title>
+    <script>
+        function startRecording() {
+            const recognition = new webkitSpeechRecognition();
+            recognition.onresult = function(event) {
+                const speechResult = event.results[0][0].transcript;
+                document.getElementById('speechResult').innerText = speechResult;
+
+                // Send the speech result to the backend for emotion recognition
+                fetch('/recognize_emotion', {
+                    method: 'POST',
+                    body: JSON.stringify({ speechResult: speechResult }),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('emotionResult').innerText = data.emotion;
+                })
+                .catch(error => console.error('Error:', error));
+            };
+            recognition.start();
+        }
+    </script>
+</head>
+<body>
+    <h1>Speech Emotion Recognition</h1>
+    <button onclick="startRecording()">Start Recording</button>
+    <p>Speech Result: <span id="speechResult"></span></p>
+    <p>Emotion Result: <span id="emotionResult"></span></p>
+</body>
+</html>
