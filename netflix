@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <img src="netflix-logo.png" alt="Netflix Logo" class="logo">
+        <img src="feature-4.png" alt="Avatar" class="avatar">
+    </header>
+    
+    <div class="main">
+        <div class="banner">
+            <div class="banner-contents">
+                <h1 class="banner-title">Movie Title</h1>
+                <div class="banner-buttons">
+                    <button class="banner-button">Play</button>
+                    <button class="banner-button">My List</button>
+                </div>
+                <h1 class="banner-description">Movie Description</h1>
+            </div>
+            <div class="banner-fadeBottom"></div>
+        </div>
+        
+        <div class="row">
+            <!-- Movie posters go here -->
+            <img class="row-poster row-posterLarge" src="feature-1.png" alt="Movie 1">
+            <img class="row-poster row-posterLarge" src="feature-2.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-3.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-4.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-5.png" alt="Movie 2">
+            
+        </div>
+    </div>
+    
+    <div class="footer">
+        <!-- Footer content goes here -->
+    </div>
+    <div >
+            <img class="row-poster row-posterLarge" src="feature-1.png" alt="Movie 1">
+            <img class="row-poster row-posterLarge" src="feature-2.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-3.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-4.png" alt="Movie 2">
+            <img class="row-poster row-posterLarge" src="feature-5.png" alt="Movie 2">
+    </div>   
+</body>
+</html>
